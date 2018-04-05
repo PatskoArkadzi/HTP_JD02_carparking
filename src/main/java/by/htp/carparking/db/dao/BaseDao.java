@@ -1,4 +1,4 @@
-package by.htp.carparking.dao;
+package by.htp.carparking.db.dao;
 
 import java.util.List;
 
@@ -10,7 +10,6 @@ public interface BaseDao <T extends Entity>{
 	T read (int id);
 	void update (T entity);
 	void delete (T entity);
-	//comment
 	List <T>readAll();
 	
 }

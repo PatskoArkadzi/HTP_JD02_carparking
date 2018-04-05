@@ -1,10 +1,8 @@
 package by.htp.carparking.domain;
 
 public class Car extends Entity {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 4276875881024936200L;
+
+	private static final long serialVersionUID = -3534865590754373783L;
 	private String model;
 	private String brand;
 
@@ -15,8 +13,6 @@ public class Car extends Entity {
 	}
 
 	public Car() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getModel() {
@@ -39,9 +35,9 @@ public class Car extends Entity {
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime*getId();
-		result = prime*result + ((brand == null) ? 0 : brand.hashCode());
-		result = prime*result + ((model == null) ? 0 : model.hashCode());
+		result = prime * getId();
+		result = prime * result + ((brand == null) ? 0 : brand.hashCode());
+		result = prime * result + ((model == null) ? 0 : model.hashCode());
 		return result;
 	}
 
@@ -68,6 +64,10 @@ public class Car extends Entity {
 		} else if (!model.equals(other.model))
 			return false;
 		return true;
+	}
+	@Override
+	public String toString() {
+		return "Car{" + "id=" + super.getId() + ", model=" + model + ", brand=" + brand + '}';
 	}
 
 }
