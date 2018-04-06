@@ -6,7 +6,7 @@ public class Car extends Entity {
 	private String model;
 	private String brand;
 
-	public Car(int id, String model, String brand) {
+	public Car(int id, String brand,String model) {
 		super(id);
 		this.model = model;
 		this.brand = brand;
@@ -65,6 +65,7 @@ public class Car extends Entity {
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
 		return "Car{" + "id=" + super.getId() + ", model=" + model + ", brand=" + brand + '}';

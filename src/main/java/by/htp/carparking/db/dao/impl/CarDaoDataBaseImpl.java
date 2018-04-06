@@ -9,9 +9,11 @@ import java.util.List;
 
 import by.htp.carparking.db.DataBaseConnection;
 import by.htp.carparking.db.dao.BaseDao;
+import by.htp.carparking.db.dao.CarDao;
 import by.htp.carparking.domain.Car;
+import by.htp.carparking.domain.Entity;
 
-public class CarDBDaoImp implements BaseDao<Car> {
+public class CarDaoDataBaseImpl implements CarDao {
 
 	@Override
 	public void create(Car entity) {
