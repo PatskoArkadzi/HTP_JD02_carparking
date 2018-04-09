@@ -9,6 +9,8 @@ import by.htp.carparking.web.action.Impl.CarDeleteAction;
 import by.htp.carparking.web.action.Impl.CarListViewAction;
 import by.htp.carparking.web.action.Impl.CarReadAction;
 import by.htp.carparking.web.action.Impl.CarUpdateAction;
+import by.htp.carparking.web.action.Impl.OrderCarAction;
+import by.htp.carparking.web.action.Impl.ReturnCarAction;
 
 public class ActionManager {
 
@@ -21,6 +23,9 @@ public class ActionManager {
 		actions.put(ACTION_NAME_READ_CAR,new CarReadAction());
 		actions.put(ACTION_NAME_UPDATE_CAR,new CarUpdateAction());
 		actions.put(ACTION_NAME_DELETE_CAR,new CarDeleteAction());
+		
+		actions.put(ACTION_NAME_ORDER_CAR,new OrderCarAction());
+		actions.put(ACTION_NAME_RETURN_CAR,new ReturnCarAction());
 		
 	}
 	

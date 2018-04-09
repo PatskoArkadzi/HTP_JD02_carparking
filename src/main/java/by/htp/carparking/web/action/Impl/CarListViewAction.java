@@ -8,18 +8,20 @@ import javax.servlet.http.HttpServletRequest;
 
 import by.htp.carparking.domain.Car;
 import by.htp.carparking.service.CarService;
+import by.htp.carparking.service.ServiceFactory;
 import by.htp.carparking.service.Impl.CarServiceImpl;
 import by.htp.carparking.web.action.BaseAction;
 
 public class CarListViewAction implements BaseAction {
-	//change to IoC, singleton
-	private CarService carService=new CarServiceImpl();
-	
+	// change to IoC, singleton
+	private CarService carService = ServiceFactory.getCarService();
+	// private CarService carService=new CarServiceImpl();
+
 	@Override
 	public String executeAction(HttpServletRequest request) {
-		List<Car> cars=carService.getCarList();
+		List<Car> cars = carService.getCarList();
 		request.setAttribute(REQUEST_PARAM_CAR_LIST, cars);
-		
+
 		return PAGE_USER_MAIN;
 	}
 }

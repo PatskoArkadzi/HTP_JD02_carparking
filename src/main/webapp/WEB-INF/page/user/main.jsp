@@ -18,6 +18,8 @@
 		</div>
 		<br>
 	</c:forEach>
+
+		<c:out value="${msg_success}" />
 </div>
 
 <%@ include file="include/end-html.jsp"%>
