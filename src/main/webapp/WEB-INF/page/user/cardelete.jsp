@@ -10,7 +10,7 @@
 <hr style="border:1px solid black" />
 <div class="container">
 	<c:forEach items="${carlist}" var="car">
-		<form class="delete-car" action="MainServlet?id=${car.id}&action=car_delete" method=POST>
+		<form class="delete-car" action="MainServlet?car_id=${car.id}&action=car_delete" method=POST>
 			<div class="row">
 				<div class=col-md-3>${car.brand}</div>
 				<div class=col-md-2>${car.model}</div>

@@ -4,8 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.LogManager;
 
+import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import by.htp.carparking.db.DataBaseConnection;
@@ -14,7 +14,7 @@ import by.htp.carparking.domain.Order;
 
 public class OrderDaoDataBaseImpl implements OrderDao {
 
-	// private static final Logger logger = (Logger) LogManager.getLogManager();
+	 private static final Logger logger = LogManager.getLogger();
 
 	@Override
 	public void create(Order entity) {
@@ -52,8 +52,9 @@ public class OrderDaoDataBaseImpl implements OrderDao {
 
 			ps.setInt(1, userId);
 			ps.setInt(2, carId);
-
 			ps.executeUpdate();
+			
+			logger.info("The car was ordered succesfully");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
