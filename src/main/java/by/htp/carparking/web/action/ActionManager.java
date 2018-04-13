@@ -2,15 +2,16 @@ package by.htp.carparking.web.action;
 
 import java.util.HashMap;
 import java.util.Map;
-import static by.htp.carparking.web.util.WebConstantDeclaration.*;
 
-import by.htp.carparking.web.action.Impl.CarCreateAction;
-import by.htp.carparking.web.action.Impl.CarDeleteAction;
-import by.htp.carparking.web.action.Impl.CarListViewAction;
-import by.htp.carparking.web.action.Impl.CarReadAction;
-import by.htp.carparking.web.action.Impl.CarUpdateAction;
-import by.htp.carparking.web.action.Impl.OrderCarAction;
-import by.htp.carparking.web.action.Impl.ReturnCarAction;
+import by.htp.carparking.web.action.impl.CarCreateAction;
+import by.htp.carparking.web.action.impl.CarDeleteAction;
+import by.htp.carparking.web.action.impl.CarListViewAction;
+import by.htp.carparking.web.action.impl.CarReadAction;
+import by.htp.carparking.web.action.impl.CarUpdateAction;
+import by.htp.carparking.web.action.impl.OrderCarAction;
+import by.htp.carparking.web.action.impl.ReturnCarAction;
+
+import static by.htp.carparking.web.util.WebConstantDeclaration.*;
 
 public class ActionManager {
 

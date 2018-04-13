@@ -1,6 +1,9 @@
-package by.htp.carparking.service.Impl;
+package by.htp.carparking.service.impl;
 
 import java.util.List;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import by.htp.carparking.db.dao.BaseDao;
 import by.htp.carparking.db.dao.CarDao;
@@ -8,37 +11,35 @@ import by.htp.carparking.db.dao.DaoFactory;
 import by.htp.carparking.db.dao.impl.CarDaoDataBaseImpl;
 import by.htp.carparking.domain.Car;
 import by.htp.carparking.service.CarService;
+import by.htp.carparking.service.OrderService;
 
 public class CarServiceImpl implements CarService {
-	// TODO change to IoC, singleton
-	private CarDao dao = (CarDao) DaoFactory.getDao();
-//	private CarDao carDao = new CarDaoDataBaseImpl();
 
 	@Override
 	public List<Car> getCarList() {
-		return dao.readAll();
+		return CAR_DAO.readAll();
 	}
 
 	@Override
 	public void createCar(Car car) {
-		dao.create(car);
+		CAR_DAO.create(car);
 	}
 
 	@Override
 	public Car readCar(int id) {
-		return dao.read(id);
+		return CAR_DAO.read(id);
 		
 	}
 
 	@Override
 	public void updateCar(Car car) {
-		dao.update(car);
+		CAR_DAO.update(car);
 		
 	}
 
 	@Override
 	public void deleteCar(Car car) {
-		dao.delete(car);
+		CAR_DAO.delete(car);
 	}
 
 }

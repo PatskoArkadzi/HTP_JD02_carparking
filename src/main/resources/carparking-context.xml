@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+
+	<bean id="DAOFactory" class="by.htp.carparking.db.dao.DaoFactory"
+		factory-method="createInstance">
+	</bean>
+	<bean id="CarDaoDataBaseImpl" factory-bean="DAOFactory"
+		factory-method="getCarDao">
+	</bean>
+	<bean id="OrderDaoDataBaseImpl" factory-bean="DAOFactory"
+		factory-method="getOrderDao">
+	</bean>
+
+
+
+	<bean id="serviceFactory"
+		class="by.htp.carparking.service.ServiceFactory"
+		factory-method="createInstance">
+	</bean>
+	<bean id="CarServiceImpl" factory-bean="serviceFactory"
+		factory-method="createCarServiceImpl">
+	</bean>
+	<bean id="OrderServiceImpl" factory-bean="serviceFactory"
+		factory-method="createOrderServiceImpl">
+	</bean>
+
+</beans>

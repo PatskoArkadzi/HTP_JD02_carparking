@@ -53,8 +53,9 @@ public class OrderDaoDataBaseImpl implements OrderDao {
 			ps.setInt(1, userId);
 			ps.setInt(2, carId);
 			ps.executeUpdate();
-			logger.error("Error");
+			
 			logger.info("The car was ordered succesfully");
+			//C:\apache\tomcat\apache-tomcat-9.0.4\apache-tomcat-9.0.4\logs\
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

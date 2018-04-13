@@ -7,7 +7,7 @@
 	<form class="read-car" action="MainServlet?action=car_read" method=POST>
 		<div class="row">
 			<div class=col-md-2>
-				<input id="id" class="form-control input-md" name="id" />
+				<input id="car_id" class="form-control input-md" name="car_id" />
 			</div>
 			<button id="Search" value="Search" name="Search"
 				class="btn btn-success">search</button>

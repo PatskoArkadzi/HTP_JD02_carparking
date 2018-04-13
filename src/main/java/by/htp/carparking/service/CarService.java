@@ -4,7 +4,7 @@ import java.util.List;
 
 import by.htp.carparking.domain.Car;
 
-public interface CarService {
+public interface CarService extends Service {
 	List<Car> getCarList();
 	void createCar(Car car);
 	Car readCar(int id);

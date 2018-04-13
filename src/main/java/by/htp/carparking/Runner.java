@@ -4,8 +4,8 @@ import java.util.List;
 
 import by.htp.carparking.db.dao.impl.CarDaoDataBaseImpl;
 import by.htp.carparking.domain.Car;
-import by.htp.carparking.service.Impl.CarServiceImpl;
-import by.htp.carparking.service.Impl.OrderServiceImpl;
+import by.htp.carparking.service.impl.CarServiceImpl;
+import by.htp.carparking.service.impl.OrderServiceImpl;
 
 
 public class Runner {

@@ -1,4 +1,4 @@
-package by.htp.carparking.web.action.Impl;
+package by.htp.carparking.web.action.impl;
 
 import javax.servlet.http.HttpServletRequest;
 

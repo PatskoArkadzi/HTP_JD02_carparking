@@ -1,13 +1,17 @@
 package by.htp.carparking.service;
 
-import by.htp.carparking.service.Impl.CarServiceImpl;
-import by.htp.carparking.service.Impl.OrderServiceImpl;
+import by.htp.carparking.service.impl.CarServiceImpl;
+import by.htp.carparking.service.impl.OrderServiceImpl;
 
 public class ServiceFactory {
-	public static CarService getCarService() {
+	
+	private static ServiceFactory createInstance(){
+		return new ServiceFactory();
+	}
+	private CarServiceImpl createCarServiceImpl() {
 		return new CarServiceImpl();
 	}
-	public static OrderService getOrderService() {
+	private OrderServiceImpl createOrderServiceImpl() {
 		return new OrderServiceImpl();
 	}
 
