@@ -10,10 +10,6 @@ import by.htp.carparking.service.OrderService;
 import by.htp.carparking.service.impl.CarServiceImpl;
 import by.htp.carparking.service.impl.OrderServiceImpl;
 
-public interface BaseAction {
-	/*static final ApplicationContext APP_CONTEXT = new ClassPathXmlApplicationContext("carparking-context.xml");
-	static final CarService CAR_SERVICE = APP_CONTEXT.getBean(CarServiceImpl.class);
-	static final OrderService ORDER_SERVICE= APP_CONTEXT.getBean(OrderServiceImpl.class);*/
-	
+public interface BaseAction {	
 	String executeAction(HttpServletRequest request);
 }

@@ -18,14 +18,19 @@
 		class="by.htp.carparking.web.action.impl.CarCreateAction">
 		<property name="carService" ref="carService"/>
 	</bean>
-	<bean name="car_update"
-		class="by.htp.carparking.web.action.impl.CarUpdateAction">
-		<property name="carService" ref="carService"/>
-	</bean>
 	<bean name="car_read"
 		class="by.htp.carparking.web.action.impl.CarReadAction">
 		<property name="carService" ref="carService"/>
 	</bean>
+	<bean name="car_update"
+		class="by.htp.carparking.web.action.impl.CarUpdateAction">
+		<property name="carService" ref="carService"/>
+	</bean>
+	<bean name="car_delete"
+		class="by.htp.carparking.web.action.impl.CarDeleteAction">
+		<property name="carService" ref="carService"/>
+	</bean>
+	
 	
 	
 	
