@@ -21,21 +21,40 @@ import static by.htp.carparking.web.util.HttpRequestParamValidator.*;
 import static by.htp.carparking.web.util.HttpRequestParamFormatter.*;
 
 public class OrderCarAction implements BaseAction {
+	CarService carService;
+	OrderService orderService;
+
+	public OrderCarAction() {
+	}
+
+	public CarService getCarService() {
+		return carService;
+	}
+
+	public void setCarService(CarService carService) {
+		this.carService = carService;
+	}
+
+	public OrderService getOrderService() {
+		return orderService;
+	}
+
+	public void setOrderService(OrderService orderService) {
+		this.orderService = orderService;
+	}
 
 	@Override
 	public String executeAction(HttpServletRequest request) {
 		String carId = request.getParameter(REQUEST_PARAM_CAR_ID);
 		String userId = request.getParameter(REQUEST_PARAM_USER_ID);
 		validateRequestParamNotNull(carId, userId);
-		ORDER_SERVICE.orderCar(formatString(userId), formatString(carId));
+		orderService.orderCar(formatString(userId), formatString(carId));
 
-		List<Car> cars = CAR_SERVICE.getCarList();
-		Car orderCar=CAR_SERVICE.readCar(formatString(carId));
+		List<Car> cars = carService.getCarList();
+		Car orderCar = carService.readCar(formatString(carId));
 		StringBuilder orderedCarMessage = new StringBuilder();
-		orderedCarMessage.append(orderCar.getBrand())
-						 .append(" ")
-						 .append(orderCar.getModel())
-						 .append(" was ordered succesfully");
+		orderedCarMessage.append(orderCar.getBrand()).append(" ").append(orderCar.getModel())
+				.append(" was ordered succesfully");
 
 		request.setAttribute(REQUEST_PARAM_CAR_LIST, cars);
 		request.setAttribute(REQUEST_MSG_SUCCESS, orderedCarMessage);

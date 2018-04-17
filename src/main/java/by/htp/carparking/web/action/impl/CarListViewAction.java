@@ -22,15 +22,20 @@ import by.htp.carparking.web.util.HttpRequestParamFormatter;
 import static by.htp.carparking.web.util.HttpRequestParamFormatter.*;
 
 public class CarListViewAction implements BaseAction {
+	private CarService carService;
 
+	public CarListViewAction() {
+	}
+	public CarService getCarService() {
+		return carService;
+	}
+	public void setCarService(CarService carService) {
+		this.carService = carService;
+	}
+	
 	@Override
 	public String executeAction(HttpServletRequest request) {		
-		if (request.getMethod().toUpperCase().equals("POST")) {
-			int userId=formatString(request.getParameter(REQUEST_PARAM_USER_ID));
-			int carId=formatString(request.getParameter(REQUEST_PARAM_CAR_ID));
-			ORDER_SERVICE.orderCar(userId,carId);
-		}
-		List<Car> cars = CAR_SERVICE.getCarList();
+		List<Car> cars = carService.getCarList();
 		request.setAttribute(REQUEST_PARAM_CAR_LIST, cars);
 
 		return PAGE_USER_MAIN;

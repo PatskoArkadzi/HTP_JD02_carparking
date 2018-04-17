@@ -11,7 +11,7 @@ import by.htp.carparking.service.impl.CarServiceImpl;
 import by.htp.carparking.service.impl.OrderServiceImpl;
 
 public interface Service {
-	static final ApplicationContext APP_CONTEXT = new ClassPathXmlApplicationContext("carparking-context.xml");
+	/*static final ApplicationContext APP_CONTEXT = new ClassPathXmlApplicationContext("carparking-context.xml");
 	static final CarDao CAR_DAO = APP_CONTEXT.getBean(CarDaoDataBaseImpl.class);
-	static final OrderDao ORDER_DAO= APP_CONTEXT.getBean(OrderDaoDataBaseImpl.class);
+	static final OrderDao ORDER_DAO= APP_CONTEXT.getBean(OrderDaoDataBaseImpl.class);*/
 }

@@ -15,6 +15,9 @@ import by.htp.carparking.domain.Entity;
 
 public class CarDaoDataBaseImpl implements CarDao {
 
+	public CarDaoDataBaseImpl() {
+	}
+
 	@Override
 	public void create(Car entity) {
 		try (Connection con = DataBaseConnection.getDBConnection(); Statement st = con.createStatement();) {

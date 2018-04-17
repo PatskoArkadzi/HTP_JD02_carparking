@@ -14,32 +14,46 @@ import by.htp.carparking.service.CarService;
 import by.htp.carparking.service.OrderService;
 
 public class CarServiceImpl implements CarService {
+	CarDao carDao;
+
+	public CarServiceImpl() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public CarDao getCarDao() {
+		return carDao;
+	}
+
+	public void setCarDao(CarDao carDao) {
+		this.carDao = carDao;
+	}
 
 	@Override
 	public List<Car> getCarList() {
-		return CAR_DAO.readAll();
+		 return carDao.readAll();
 	}
 
 	@Override
 	public void createCar(Car car) {
-		CAR_DAO.create(car);
+		carDao.create(car);
 	}
 
 	@Override
 	public Car readCar(int id) {
-		return CAR_DAO.read(id);
-		
+		 return carDao.read(id);
+
 	}
 
 	@Override
 	public void updateCar(Car car) {
-		CAR_DAO.update(car);
-		
+		carDao.update(car);
+
 	}
 
 	@Override
 	public void deleteCar(Car car) {
-		CAR_DAO.delete(car);
+		carDao.delete(car);
 	}
 
 }

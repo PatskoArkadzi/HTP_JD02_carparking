@@ -14,7 +14,10 @@ import by.htp.carparking.domain.Order;
 
 public class OrderDaoDataBaseImpl implements OrderDao {
 
-	 private static final Logger logger = LogManager.getLogger();
+	 public OrderDaoDataBaseImpl() {
+	}
+
+	private static final Logger logger = LogManager.getLogger();
 
 	@Override
 	public void create(Order entity) {

@@ -9,10 +9,22 @@ import by.htp.carparking.db.dao.impl.OrderDaoDataBaseImpl;
 import by.htp.carparking.service.OrderService;
 
 public class OrderServiceImpl implements OrderService {
+	OrderDao orderDao;
+
+	public OrderServiceImpl() {
+	}
+
+	public OrderDao getOrderDao() {
+		return orderDao;
+	}
+
+	public void setOrderDao(OrderDao orderDao) {
+		this.orderDao = orderDao;
+	}
 
 	@Override
 	public void orderCar(int userId, int carId) {
-		ORDER_DAO.insertNewOrder(userId, carId);
+		orderDao.insertNewOrder(userId, carId);
 	}
 
 }

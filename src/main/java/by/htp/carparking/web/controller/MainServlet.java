@@ -9,9 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
 import by.htp.carparking.db.dao.impl.CarDaoDataBaseImpl;
 import by.htp.carparking.domain.Car;
 import by.htp.carparking.web.action.ActionManager;
+import by.htp.carparking.web.action.ActionManagerContext;
 import by.htp.carparking.web.action.BaseAction;
 import static by.htp.carparking.web.util.WebConstantDeclaration.*;
 
@@ -33,9 +37,11 @@ public class MainServlet extends HttpServlet {
 
 	private void process(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+		ServletContext servletContext=request.getServletContext();
+		WebApplicationContext webApplicationContext=
+				WebApplicationContextUtils.getWebApplicationContext(servletContext);
 		String action = request.getParameter(REQUEST_PARAM_ACTION);
-		BaseAction baseAction = ActionManager.getAction(action);
+		BaseAction baseAction = ActionManagerContext.getAction(action,webApplicationContext);
 		if (action != null) {
 			String page = baseAction.executeAction(request);
 			request.getRequestDispatcher(page).forward(request, response);

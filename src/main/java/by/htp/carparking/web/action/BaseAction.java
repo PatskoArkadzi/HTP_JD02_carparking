@@ -11,9 +11,9 @@ import by.htp.carparking.service.impl.CarServiceImpl;
 import by.htp.carparking.service.impl.OrderServiceImpl;
 
 public interface BaseAction {
-	static final ApplicationContext APP_CONTEXT = new ClassPathXmlApplicationContext("carparking-context.xml");
+	/*static final ApplicationContext APP_CONTEXT = new ClassPathXmlApplicationContext("carparking-context.xml");
 	static final CarService CAR_SERVICE = APP_CONTEXT.getBean(CarServiceImpl.class);
-	static final OrderService ORDER_SERVICE= APP_CONTEXT.getBean(OrderServiceImpl.class);
+	static final OrderService ORDER_SERVICE= APP_CONTEXT.getBean(OrderServiceImpl.class);*/
 	
 	String executeAction(HttpServletRequest request);
 }

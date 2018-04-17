@@ -13,6 +13,20 @@ import static by.htp.carparking.web.util.WebConstantDeclaration.*;
 import static by.htp.carparking.web.util.HttpRequestParamFormatter.*;
 
 public class CarUpdateAction implements BaseAction {
+	CarService carService;
+
+	public CarUpdateAction() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public CarService getCarService() {
+		return carService;
+	}
+
+	public void setCarService(CarService carService) {
+		this.carService = carService;
+	}
 
 	@Override
 	public String executeAction(HttpServletRequest request) {
@@ -20,9 +34,9 @@ public class CarUpdateAction implements BaseAction {
 			Car car = new Car(formatString(request.getParameter(REQUEST_PARAM_CAR_ID)),
 					request.getParameter(REQUEST_PARAM_CAR_BRAND), request.getParameter(REQUEST_PARAM_CAR_MODEL));
 
-			CAR_SERVICE.updateCar(car);
+			carService.updateCar(car);
 		}
-		request.setAttribute(REQUEST_PARAM_CAR_LIST, CAR_SERVICE.getCarList());
+		request.setAttribute(REQUEST_PARAM_CAR_LIST, carService.getCarList());
 		return PAGE_USER_CAR_UPDATE;
 	}
 }
