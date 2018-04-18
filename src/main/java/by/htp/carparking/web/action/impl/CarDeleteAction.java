@@ -15,6 +15,20 @@ import static by.htp.carparking.web.util.HttpRequestParamFormatter.*;
 
 public class CarDeleteAction implements BaseAction {
 	private CarService carService;	
+	
+	public CarDeleteAction() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public CarService getCarService() {
+		return carService;
+	}
+
+	public void setCarService(CarService carService) {
+		this.carService = carService;
+	}
+
 	@Override
 	public String executeAction(HttpServletRequest request) {
 		if (request.getMethod().toUpperCase().equals("POST")) {
