@@ -23,20 +23,49 @@ CREATE TABLE IF NOT EXISTS `cars` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `brand` varchar(50) DEFAULT NULL,
   `model` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `FK_cars_orders` FOREIGN KEY (`id`) REFERENCES `orders` (`carId`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=ascii ROW_FORMAT=COMPACT;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=ascii ROW_FORMAT=COMPACT;
 
 -- Экспортируемые данные не выделены.
 -- Дамп структуры для таблица carparking.orders
 DROP TABLE IF EXISTS `orders`;
 CREATE TABLE IF NOT EXISTS `orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `userId` int(11) NOT NULL DEFAULT '0',
-  `carId` int(11) NOT NULL DEFAULT '0',
+  `user_id` int(11) NOT NULL,
+  `car_id` int(11) NOT NULL,
+  `dateStart` date NOT NULL,
+  `dateEnd` date NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `carId` (`carId`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=ascii ROW_FORMAT=COMPACT;
+  KEY `carId` (`car_id`),
+  KEY `FK_orders_users` (`user_id`),
+  CONSTRAINT `FK_orders_cars` FOREIGN KEY (`car_id`) REFERENCES `cars` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_orders_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=ascii ROW_FORMAT=COMPACT;
+
+-- Экспортируемые данные не выделены.
+-- Дамп структуры для таблица carparking.roles
+DROP TABLE IF EXISTS `roles`;
+CREATE TABLE IF NOT EXISTS `roles` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `role` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=ascii;
+
+-- Экспортируемые данные не выделены.
+-- Дамп структуры для таблица carparking.users
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `login` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `phoneNumber` varchar(50) NOT NULL,
+  `roles_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `roles_id` (`roles_id`),
+  CONSTRAINT `FK_users_roles` FOREIGN KEY (`roles_id`) REFERENCES `roles` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=ascii;
 
 -- Экспортируемые данные не выделены.
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
