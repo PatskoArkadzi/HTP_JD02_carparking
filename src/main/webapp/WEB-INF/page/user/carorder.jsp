@@ -38,42 +38,5 @@
 	</div>
 </form>
 
-<!-- 
-				<button type="button" class="btn btn-primary" data-toggle="modal"
-					data-target="#orderModal">Заказать</button>
-
-				Modal
-				<div class="modal fade" id="orderModal" tabindex="-1" role="dialog"
-					aria-labelledby="orderModalLabel" aria-hidden="true">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel">Выберите
-									период использования</h5>
-								<button type="button" class="close" data-dismiss="modal"
-									aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-								<p>Выберите дату начада:</p>
-								<p>
-									<input type="date" name="start">
-								</p>
-								<p>Выберите дату начада:</p>
-								<p>
-									<input type="date" name="end">
-								</p>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary"
-									data-dismiss="modal">Close</button>
-								<button type="submit" class="btn btn-primary">Save
-									changes</button>
-							</div>
-						</div>
-					</div>
-				</div> -->
-
 <%@ include file="include/end-html.jsp"%>
 
