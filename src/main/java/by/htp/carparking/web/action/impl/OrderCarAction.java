@@ -84,20 +84,5 @@ public class OrderCarAction implements BaseAction {
 		}
 		request.setAttribute(REQUEST_PARAM_MSG_ERROR, "Во время заказа авто произошла ошибка");
 		return PAGE_ERROR;
-
-		/*
-		 * String carId = request.getParameter(REQUEST_PARAM_CAR_ID); String userId =
-		 * request.getParameter(REQUEST_PARAM_USER_ID);
-		 * validateRequestParamNotNull(carId, userId); Car orderCar =
-		 * carService.readCar(formatString(carId)); if (orderCar != null) {
-		 * orderService.orderCar(formatString(userId), formatString(carId));
-		 * StringBuilder orderedCarMessage = new StringBuilder();
-		 * orderedCarMessage.append(orderCar.getBrand()).append(" ").append(orderCar.
-		 * getModel()) .append(" was ordered succesfully");
-		 * 
-		 * request.setAttribute(REQUEST_PARAM_MSG_ORDER_CAR_SUCCESS, orderedCarMessage);
-		 * return PAGE_USER_MAIN; }else { request.setAttribute(REQUEST_PARAM_MSG_ERROR,
-		 * "Во время заказа авто произошла ошибка"); return PAGE_ERROR; }
-		 */
 	}
 }
