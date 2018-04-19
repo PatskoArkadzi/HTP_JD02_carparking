@@ -31,29 +31,5 @@
 		<property name="carService" ref="carService" />
 		<property name="userService" ref="userService" />
 	</bean>
-
-
-	<bean name="carService"
-		class="by.htp.carparking.service.impl.CarServiceImpl">
-		<property name="carDao" ref="carDao"></property>
-	</bean>
-	<bean name="orderService"
-		class="by.htp.carparking.service.impl.OrderServiceImpl">
-		<property name="orderDao" ref="orderDao"></property>
-	</bean>
-	<bean name="userService"
-		class="by.htp.carparking.service.impl.UserServiceImpl">
-		<property name="userDao" ref="userDao"></property>
-	</bean>
-
-	<bean name="carDao"
-		class="by.htp.carparking.db.dao.impl.CarDaoDataBaseImpl">
-	</bean>
-	<bean name="orderDao"
-		class="by.htp.carparking.db.dao.impl.OrderDaoDataBaseImpl">
-	</bean>
-	<bean name="userDao"
-		class="by.htp.carparking.db.dao.impl.UserDaoDataBaseImpl">
-	</bean>
-
+	
 </beans>
