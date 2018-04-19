@@ -2,16 +2,9 @@ package by.htp.carparking.service.impl;
 
 import java.util.List;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import by.htp.carparking.db.dao.BaseDao;
 import by.htp.carparking.db.dao.CarDao;
-import by.htp.carparking.db.dao.DaoFactory;
-import by.htp.carparking.db.dao.impl.CarDaoDataBaseImpl;
 import by.htp.carparking.domain.Car;
 import by.htp.carparking.service.CarService;
-import by.htp.carparking.service.OrderService;
 
 public class CarServiceImpl implements CarService {
 	CarDao carDao;

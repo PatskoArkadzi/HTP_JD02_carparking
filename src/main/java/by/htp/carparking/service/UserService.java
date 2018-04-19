@@ -5,7 +5,7 @@ import java.util.List;
 import by.htp.carparking.domain.User;
 
 public interface UserService extends Service {
-	List<User> getCarList();
+	List<User> getUserList();
 
 	void createUser(User user);
 

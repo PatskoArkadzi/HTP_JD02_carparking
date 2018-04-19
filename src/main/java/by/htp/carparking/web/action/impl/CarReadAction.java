@@ -3,10 +3,7 @@ package by.htp.carparking.web.action.impl;
 import javax.servlet.http.HttpServletRequest;
 
 import by.htp.carparking.service.CarService;
-import by.htp.carparking.service.ServiceFactory;
-import by.htp.carparking.service.impl.CarServiceImpl;
 import by.htp.carparking.web.action.BaseAction;
-import by.htp.carparking.web.util.HttpRequestParamFormatter;
 
 import static by.htp.carparking.web.util.WebConstantDeclaration.*;
 import static by.htp.carparking.web.util.HttpRequestParamFormatter.*;

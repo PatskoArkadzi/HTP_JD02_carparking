@@ -3,7 +3,6 @@ package by.htp.carparking.web.action.impl;
 import javax.servlet.http.HttpServletRequest;
 
 
-import by.htp.carparking.db.dao.impl.OrderDaoDataBaseImpl;
 import by.htp.carparking.domain.Car;
 import by.htp.carparking.domain.User;
 import by.htp.carparking.service.CarService;
@@ -52,9 +51,6 @@ public class OrderCarAction implements BaseAction {
 
 	@Override
 	public String executeAction(HttpServletRequest request) {
-		System.out.println("new OrderDaoDataBaseImpl().readAll().size()" + new OrderDaoDataBaseImpl().readAll().size());
-		System.out.println("new OrderDaoDataBaseImpl().readAll()" + new OrderDaoDataBaseImpl().readAll());
-
 		String carId = request.getParameter(REQUEST_PARAM_CAR_ID);
 		String userId = request.getParameter(REQUEST_PARAM_USER_ID);
 		validateRequestParamNotNull(carId, userId);

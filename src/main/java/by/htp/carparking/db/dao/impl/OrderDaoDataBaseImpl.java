@@ -94,9 +94,7 @@ public class OrderDaoDataBaseImpl implements OrderDao {
 		}
 	}
 
-	// select * from orders where car_id=1
 	public boolean isCarFree(int carId, Date start, Date end) {
-		StringBuilder sb = new StringBuilder();
 		try (Connection con = DataBaseConnection.getDBConnection(); Statement st = con.createStatement();) {
 			ResultSet rs = st.executeQuery("SELECT * FROM `orders`");
 			while (rs.next()) {
