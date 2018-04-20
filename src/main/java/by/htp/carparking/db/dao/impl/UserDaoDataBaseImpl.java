@@ -8,11 +8,15 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import by.htp.carparking.db.DataBaseConnection;
 import by.htp.carparking.db.dao.UserDao;
 import by.htp.carparking.domain.User;
 
 public class UserDaoDataBaseImpl implements UserDao {
+	private static final Logger logger = LogManager.getLogger();
 
 	public UserDaoDataBaseImpl() {
 	}
@@ -37,7 +41,7 @@ public class UserDaoDataBaseImpl implements UserDao {
 			} else
 				throw new SQLException();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("Exception", e);
 		}
 	}
 
@@ -53,7 +57,7 @@ public class UserDaoDataBaseImpl implements UserDao {
 			else
 				throw new IllegalArgumentException();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("Exception", e);
 		}
 		return null;
 	}
@@ -72,7 +76,7 @@ public class UserDaoDataBaseImpl implements UserDao {
 			ps.setInt(3, entity.getId());
 			ps.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("Exception", e);
 		}
 	}
 
@@ -83,7 +87,7 @@ public class UserDaoDataBaseImpl implements UserDao {
 			ps.setInt(1, entity.getId());
 			ps.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("Exception", e);
 		}
 	}
 
@@ -99,7 +103,7 @@ public class UserDaoDataBaseImpl implements UserDao {
 								rs.getString("name"), rs.getString("phoneNumber"), rs.getInt("roles_id")));
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("Exception", e);
 		}
 		return allUsers;
 	}

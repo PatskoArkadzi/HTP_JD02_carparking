@@ -8,11 +8,16 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import by.htp.carparking.db.DataBaseConnection;
 import by.htp.carparking.db.dao.CarDao;
 import by.htp.carparking.domain.Car;
+import static by.htp.carparking.web.util.WebConstantDeclaration.*;
 
 public class CarDaoDataBaseImpl implements CarDao {
+	private static final Logger logger = LogManager.getLogger();
 
 	public CarDaoDataBaseImpl() {
 	}
@@ -20,7 +25,7 @@ public class CarDaoDataBaseImpl implements CarDao {
 	@Override
 	public void create(Car entity) {
 		try (Connection con = DataBaseConnection.getDBConnection()) {
-			PreparedStatement ps = con.prepareStatement("INSERT INTO `cars`(`brand`, `model`) VALUES (?,?)");
+			PreparedStatement ps = con.prepareStatement(SQL_QUERY_CAR_CREATE);
 			ps.setString(1, entity.getBrand());
 			ps.setString(2, entity.getModel());
 
@@ -31,21 +36,22 @@ public class CarDaoDataBaseImpl implements CarDao {
 					entity.setId(rs.getInt(1));
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("Exception", e);
 		}
 	}
 
 	@Override
 	public Car read(int id) {
 		try (Connection con = DataBaseConnection.getDBConnection()) {
-			PreparedStatement ps = con.prepareStatement("SELECT * FROM `cars` WHERE id=?");
+			PreparedStatement ps = con.prepareStatement(SQL_QUERY_CAR_READ);
 			ps.setInt(1, id);
-			ResultSet rs = ps.executeQuery();
-			if (rs.next())
-				return new Car(rs.getInt("id"), rs.getString("brand"), rs.getString("model"));
-			else throw new IllegalArgumentException();
+			ResultSet resultSet = ps.executeQuery();
+			if (resultSet.next())
+				return buildCar(resultSet);
+			else
+				logger.error("Автомобиля с таким id нет");
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("Exception", e);
 		}
 		return null;
 	}
@@ -53,24 +59,24 @@ public class CarDaoDataBaseImpl implements CarDao {
 	@Override
 	public void update(Car entity) {
 		try (Connection con = DataBaseConnection.getDBConnection()) {
-			PreparedStatement ps = con.prepareStatement("UPDATE `cars` " + "SET `brand`=?,`model`=? WHERE id=?");
+			PreparedStatement ps = con.prepareStatement(SQL_QUERY_CAR_UPDATE);
 			ps.setString(1, entity.getBrand());
 			ps.setString(2, entity.getModel());
 			ps.setInt(3, entity.getId());
 			ps.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("Exception", e);
 		}
 	}
 
 	@Override
 	public void delete(Car entity) {
 		try (Connection con = DataBaseConnection.getDBConnection()) {
-			PreparedStatement ps = con.prepareStatement("DELETE FROM `cars` WHERE id=?");
+			PreparedStatement ps = con.prepareStatement(SQL_QUERY_CAR_DELETE);
 			ps.setInt(1, entity.getId());
 			ps.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("Exception", e);
 		}
 	}
 
@@ -78,15 +84,24 @@ public class CarDaoDataBaseImpl implements CarDao {
 	public List<Car> readAll() {
 		List<Car> allCars = null;
 		try (Connection con = DataBaseConnection.getDBConnection(); Statement st = con.createStatement();) {
-			ResultSet rs = st.executeQuery("SELECT * FROM `cars`");
+			ResultSet resultSet = st.executeQuery(SQL_QUERY_CAR_READ_ALL);
 			allCars = new ArrayList<>();
-			while (rs.next()) {
-				allCars.add(new Car(rs.getInt("id"), rs.getString("brand"), rs.getString("model")));
+			while (resultSet.next()) {
+				allCars.add(buildCar(resultSet));
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("Exception", e);
 		}
 		return allCars;
+	}
+
+	private Car buildCar(ResultSet resultSet) throws SQLException {
+		Car car = new Car();
+		car.setId(resultSet.getInt(SQL_QUERY_COLUMN_NAME_CAR_ID));
+		car.setBrand(resultSet.getString(SQL_QUERY_COLUMN_NAME_CAR_BRAND));
+		car.setModel(resultSet.getString(SQL_QUERY_COLUMN_NAME_CAR_MODEL));
+		return car;
+
 	}
 
 }

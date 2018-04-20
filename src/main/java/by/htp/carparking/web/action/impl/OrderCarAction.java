@@ -2,6 +2,8 @@ package by.htp.carparking.web.action.impl;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import by.htp.carparking.domain.Car;
 import by.htp.carparking.domain.User;
@@ -21,6 +23,7 @@ public class OrderCarAction implements BaseAction {
 	CarService carService;
 	OrderService orderService;
 	UserService userService;
+	private static final Logger logger = LogManager.getLogger();
 
 	public OrderCarAction() {
 	}
@@ -57,7 +60,7 @@ public class OrderCarAction implements BaseAction {
 		Car orderCar = carService.readCar(formatString(carId));
 		User user = userService.readUser(formatString(userId));
 		if (orderCar != null && user != null) {
-			request.setAttribute(SESSION_PARAM_USER, user);
+			request.setAttribute(REQUEST_PARAM_USER, user);
 			request.setAttribute(REQUEST_PARAM_ORDERED_CAR, orderCar);
 
 			String dateStart = request.getParameter("start");
@@ -71,14 +74,19 @@ public class OrderCarAction implements BaseAction {
 					StringBuilder orderedCarMessage = new StringBuilder();
 					orderedCarMessage.append(orderCar.getBrand()).append(" ").append(orderCar.getModel())
 							.append(" was ordered succesfully");
+					
+					//TODO create property file for success, error and etc msgs
 					request.setAttribute(REQUEST_PARAM_MSG_ORDER_CAR_SUCCESS, orderedCarMessage);
 				} else {
-					request.setAttribute(REQUEST_PARAM_MSG_ERROR, "В эти дни автомобиль занят");
+					request.setAttribute(REQUEST_PARAM_MSG_ERROR, "Р’ СЌС‚Рѕ РІСЂРµРјСЏ Р°РІС‚РѕРјРѕР±РёР»СЊ Р·Р°РЅСЏС‚");
 				}
 			}
 			return PAGE_USER_CAR_ORDER;
 		}
-		request.setAttribute(REQUEST_PARAM_MSG_ERROR, "Во время заказа авто произошла ошибка");
+		//TODO create property file for success, error and etc msgs
+		String errorMessage="Р’Рѕ РІСЂРµРјСЏ Р·Р°РєР°Р·Р° Р°РІС‚РѕРјРѕР±РёР»СЏ РїСЂРѕРёР·РѕС€Р»Р° РѕС€РёР±РєР°";
+		request.setAttribute(REQUEST_PARAM_MSG_ERROR, errorMessage);
+		logger.info(errorMessage);
 		return PAGE_ERROR;
 	}
 }

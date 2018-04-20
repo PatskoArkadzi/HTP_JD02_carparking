@@ -23,8 +23,6 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public void orderCar(int userId, int carId, Date dateStart, Date dateEnd) {
-		System.out.println("dateStart"+dateStart);
-		System.out.println("dateEnd"+dateEnd);
 		orderDao.insertNewOrder(userId, carId, dateStart, dateEnd);
 	}
 
@@ -32,14 +30,8 @@ public class OrderServiceImpl implements OrderService {
 		List<Order> list = orderDao.readAll(String.format("where car_id=" + carId));
 		for (Order order : list) {
 			if ((start.after(order.getDateStart()) && start.before(order.getDateEnd()))
-					|| (end.before(order.getDateStart()) && end.after(order.getDateStart()))) {
-				System.out.println("Ошибка");
-				System.out.println("start" + start);
-				System.out.println("dateEnd" + order.getDateEnd());
-				System.out.println("end" + end);
-				System.out.println("dateStart" + order.getDateStart());
+					|| (end.before(order.getDateStart()) && end.after(order.getDateStart())))
 				return false;
-			}
 		}
 		return true;
 	}
