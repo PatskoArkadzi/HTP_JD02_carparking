@@ -68,7 +68,7 @@ public class Car extends Entity {
 
 	@Override
 	public String toString() {
-		return "Car{" + "id=" + super.getId() + ", model=" + model + ", brand=" + brand + '}';
+		return "Car{" + "id=" + super.getId() + ", brand=" + brand + ", model=" + model+ '}';
 	}
 
 }
