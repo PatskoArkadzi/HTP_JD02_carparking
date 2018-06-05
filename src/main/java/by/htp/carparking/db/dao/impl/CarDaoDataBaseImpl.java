@@ -8,8 +8,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import by.htp.carparking.db.DataBaseConnection;
 import by.htp.carparking.db.dao.CarDao;
@@ -17,7 +15,7 @@ import by.htp.carparking.domain.Car;
 import static by.htp.carparking.web.util.WebConstantDeclaration.*;
 
 public class CarDaoDataBaseImpl implements CarDao {
-	private static final Logger logger = LogManager.getLogger();
+//	private static final Logger logger = LogManager.getLogger();
 
 	public CarDaoDataBaseImpl() {
 	}
@@ -36,7 +34,7 @@ public class CarDaoDataBaseImpl implements CarDao {
 					entity.setId(rs.getInt(1));
 			}
 		} catch (SQLException e) {
-			logger.error("Exception", e);
+//			logger.error("Exception", e);
 		}
 	}
 
@@ -48,10 +46,10 @@ public class CarDaoDataBaseImpl implements CarDao {
 			ResultSet resultSet = ps.executeQuery();
 			if (resultSet.next())
 				return buildCar(resultSet);
-			else
-				logger.error("Автомобиля с таким id нет");
+//			else
+//				logger.error("Автомобиля с таким id нет");
 		} catch (SQLException e) {
-			logger.error("Exception", e);
+//			logger.error("Exception", e);
 		}
 		return null;
 	}
@@ -65,7 +63,7 @@ public class CarDaoDataBaseImpl implements CarDao {
 			ps.setInt(3, entity.getId());
 			ps.executeUpdate();
 		} catch (SQLException e) {
-			logger.error("Exception", e);
+//			logger.error("Exception", e);
 		}
 	}
 
@@ -76,7 +74,7 @@ public class CarDaoDataBaseImpl implements CarDao {
 			ps.setInt(1, entity.getId());
 			ps.executeUpdate();
 		} catch (SQLException e) {
-			logger.error("Exception", e);
+//			logger.error("Exception", e);
 		}
 	}
 
@@ -90,7 +88,7 @@ public class CarDaoDataBaseImpl implements CarDao {
 				allCars.add(buildCar(resultSet));
 			}
 		} catch (SQLException e) {
-			logger.error("Exception", e);
+//			logger.error("Exception", e);
 		}
 		return allCars;
 	}

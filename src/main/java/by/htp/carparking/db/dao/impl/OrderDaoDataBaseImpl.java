@@ -9,8 +9,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import by.htp.carparking.db.DataBaseConnection;
 import by.htp.carparking.db.dao.OrderDao;
@@ -23,7 +21,7 @@ public class OrderDaoDataBaseImpl implements OrderDao {
 	public OrderDaoDataBaseImpl() {
 	}
 
-	private static final Logger logger = LogManager.getLogger();
+//	private static final Logger logger = LogManager.getLogger();
 
 	@Override
 	public void create(Order entity) {
@@ -56,7 +54,7 @@ public class OrderDaoDataBaseImpl implements OrderDao {
 				allOrders.add(buildOrder(rs));
 			}
 		} catch (SQLException e) {
-			logger.error("Exception", e);
+//			logger.error("Exception", e);
 		}
 		return allOrders;
 	}
@@ -70,7 +68,7 @@ public class OrderDaoDataBaseImpl implements OrderDao {
 				allOrders.add(buildOrder(rs));
 			}
 		} catch (SQLException e) {
-			logger.error("Exception", e);
+//			logger.error("Exception", e);
 		}
 		return allOrders;
 	}
@@ -87,10 +85,10 @@ public class OrderDaoDataBaseImpl implements OrderDao {
 			ps.setDate(4, dateEnd);
 			ps.executeUpdate();
 
-			logger.info("The car was ordered succesfully");
+//			logger.info("The car was ordered succesfully");
 			//C:\apache\tomcat\apache-tomcat-9.0.4\apache-tomcat-9.0.4\logs\
 		} catch (SQLException e) {
-			logger.error("Exception", e);
+//			logger.error("Exception", e);
 		}
 	}
 
@@ -102,7 +100,7 @@ public class OrderDaoDataBaseImpl implements OrderDao {
 					return false;
 			}
 		} catch (SQLException e) {
-			logger.error("Exception", e);
+//			logger.error("Exception", e);
 		}
 		return true;
 	}

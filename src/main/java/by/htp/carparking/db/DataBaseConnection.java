@@ -5,13 +5,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 public class DataBaseConnection {
 	private static Connection connection = null;
 	private static final String DB_CONNECT_PROPERTY = "db_config";
-	private static final Logger logger = LogManager.getLogger();
+//	private static final Logger logger = LogManager.getLogger();
 
 	public static Connection getDBConnection() {
 		ResourceBundle rb = ResourceBundle.getBundle(DB_CONNECT_PROPERTY);
@@ -20,7 +18,7 @@ public class DataBaseConnection {
 			connection = DriverManager.getConnection(rb.getString("db.url"), rb.getString("db.login"),
 					rb.getString("db.pass"));
 		} catch (ClassNotFoundException | SQLException e) {
-			logger.error("Exception", e);
+//			logger.error("Exception", e);
 		}
 		return connection;
 	}

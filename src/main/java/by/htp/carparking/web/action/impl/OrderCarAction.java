@@ -2,8 +2,8 @@ package by.htp.carparking.web.action.impl;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 
 import by.htp.carparking.domain.Car;
 import by.htp.carparking.domain.User;
@@ -23,7 +23,7 @@ public class OrderCarAction implements BaseAction {
 	CarService carService;
 	OrderService orderService;
 	UserService userService;
-	private static final Logger logger = LogManager.getLogger();
+//	private static final Logger logger = LogManager.getLogger();
 
 	public OrderCarAction() {
 	}
@@ -86,7 +86,7 @@ public class OrderCarAction implements BaseAction {
 		//TODO create property file for success, error and etc msgs
 		String errorMessage="Во время заказа автомобиля произошла ошибка";
 		request.setAttribute(REQUEST_PARAM_MSG_ERROR, errorMessage);
-		logger.info(errorMessage);
+//		logger.info(errorMessage);
 		return PAGE_ERROR;
 	}
 }
