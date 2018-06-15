@@ -6,6 +6,8 @@
 <head>
 <title>login page</title>
 </head>
-
+<body>
 <c:out value="error" />
+
+</body>
 </html>

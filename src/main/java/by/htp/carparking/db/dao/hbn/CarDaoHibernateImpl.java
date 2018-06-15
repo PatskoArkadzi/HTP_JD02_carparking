@@ -44,8 +44,12 @@ public class CarDaoHibernateImpl implements CarDao{
 
 	@Override
 	public void delete(Car entity) {
-		// TODO Auto-generated method stub
-		
+		SessionFactory factory = SessionFactoryManager.getSessionFactory();
+		Session session = factory.openSession();
+		session.getTransaction().begin();
+		session.delete(entity);
+		session.getTransaction().commit();
+		session.close();		
 	}
 
 	@Override
