@@ -20,7 +20,7 @@
 			</div>
 		</form>		
 		<hr>
-		<div class="container" align="right">		
+		<div class="container" align="center">		
 			<h3>wheather</h3>
 			<img src="https://www.metaweather.com/static/img/weather/ico/${jsonWheather.get('weather_state_abbr')}.ico">
 			<div>min:<fmt:formatNumber value="${jsonWheather.get('min_temp')}" maxFractionDigits="0" /> &deg;C</div>

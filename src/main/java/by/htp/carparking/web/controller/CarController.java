@@ -31,12 +31,11 @@ public class CarController {
 		this.carService = carService;
 	}
 
-	@SuppressWarnings("serial")
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView cars() throws ParseException {
 		System.out.println("in cars");
 		RestTemplate restTemplate = new RestTemplate();
-		String url = "https://www.metaweather.com/api/location/834463/2018/6/15/";
+		String url = "https://www.metaweather.com/api/location/834463/2018/6/19/";
 		ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
 		JSONArray jsonAarray = (JSONArray) new JSONParser().parse(response.getBody());
 

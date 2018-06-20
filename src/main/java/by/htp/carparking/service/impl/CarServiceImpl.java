@@ -2,18 +2,25 @@ package by.htp.carparking.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import by.htp.carparking.db.dao.CarDao;
 import by.htp.carparking.domain.Car;
 import by.htp.carparking.service.CarService;
 
+@Component
 public class CarServiceImpl implements CarService {
+	
+	@Autowired
 	CarDao carDao;
 
+	
 	public CarServiceImpl() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	public CarDao getCarDao() {
 		return carDao;
 	}
@@ -24,7 +31,7 @@ public class CarServiceImpl implements CarService {
 
 	@Override
 	public List<Car> getCarList() {
-		 return carDao.readAll();
+		return carDao.readAll();
 	}
 
 	@Override
@@ -34,7 +41,7 @@ public class CarServiceImpl implements CarService {
 
 	@Override
 	public Car readCar(int id) {
-		 return carDao.read(id);
+		return carDao.read(id);
 
 	}
 
