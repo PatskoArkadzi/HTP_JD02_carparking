@@ -3,13 +3,15 @@ package by.htp.carparking.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import by.htp.carparking.db.dao.CarDao;
 import by.htp.carparking.domain.Car;
 import by.htp.carparking.service.CarService;
 
-@Component
+@Service
 public class CarServiceImpl implements CarService {
 	
 	@Autowired

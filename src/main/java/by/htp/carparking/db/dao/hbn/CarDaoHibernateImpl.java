@@ -7,10 +7,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Component;
 
 import by.htp.carparking.db.dao.CarDao;
 import by.htp.carparking.domain.Car;
 
+@Component
 public class CarDaoHibernateImpl implements CarDao{
 
 	@Override

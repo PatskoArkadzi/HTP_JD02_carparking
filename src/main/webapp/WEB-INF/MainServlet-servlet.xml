@@ -19,11 +19,6 @@
 	<context:component-scan
 		base-package="by.htp.carparking" />
 		
-	<!-- <context:component-scan
-		base-package="by.htp.carparking.service.impl" />
-	<context:component-scan base-package="by.htp.carparking.web.controller" />
- 	<context:component-scan base-package="by.htp.carparking.service" /> 
- 	<context:component-scan base-package="by.htp.carparking.aspect" /> -->
 	<aop:aspectj-autoproxy />
 	
 	<bean id="contentNegotiationManager"

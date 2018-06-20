@@ -9,13 +9,14 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
 
 import by.htp.carparking.db.DataBaseConnection;
 import by.htp.carparking.db.dao.OrderDao;
 import by.htp.carparking.domain.Order;
 import static by.htp.carparking.web.util.WebConstantDeclaration.*;
 
-
+@Component
 public class OrderDaoDataBaseImpl implements OrderDao {
 
 	public OrderDaoDataBaseImpl() {

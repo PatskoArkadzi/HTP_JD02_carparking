@@ -33,9 +33,9 @@ public class CarController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView cars() throws ParseException {
-		System.out.println("in cars");
+//		System.out.println("in cars");
 		RestTemplate restTemplate = new RestTemplate();
-		String url = "https://www.metaweather.com/api/location/834463/2018/6/19/";
+		String url = "https://www.metaweather.com/api/location/834463/2018/6/20/";
 		ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
 		JSONArray jsonAarray = (JSONArray) new JSONParser().parse(response.getBody());
 
@@ -48,7 +48,7 @@ public class CarController {
 	}
 	@RequestMapping(method = RequestMethod.POST)
 	public HttpStatus addCar(@RequestBody Car car) {
-		System.out.println("in addCar car=" + car);
+//		System.out.println("in addCar car=" + car);
 		HttpStatus status;
 		if (car != null) {
 			carService.createCar(car);
@@ -60,7 +60,7 @@ public class CarController {
 
 	@RequestMapping(method = RequestMethod.DELETE)
 	public HttpStatus deleteCar(@RequestBody Car car) {
-		System.out.println("in deleteCar car=" + car);
+//		System.out.println("in deleteCar car=" + car);
 		HttpStatus status;
 		if (car != null) {
 			carService.deleteCar(car);

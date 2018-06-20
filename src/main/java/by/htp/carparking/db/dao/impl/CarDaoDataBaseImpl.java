@@ -8,12 +8,14 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
 
 import by.htp.carparking.db.DataBaseConnection;
 import by.htp.carparking.db.dao.CarDao;
 import by.htp.carparking.domain.Car;
 import static by.htp.carparking.web.util.WebConstantDeclaration.*;
 
+@Component
 public class CarDaoDataBaseImpl implements CarDao {
 //	private static final Logger logger = LogManager.getLogger();
 
