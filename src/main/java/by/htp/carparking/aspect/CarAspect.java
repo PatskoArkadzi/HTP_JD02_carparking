@@ -1,6 +1,11 @@
 package by.htp.carparking.aspect;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
@@ -16,21 +21,49 @@ public class CarAspect {
 	private static final Logger logger = LogManager.getLogger();
 
 	@Before("execution(* by.htp.carparking.service.impl.CarServiceImpl.getCarList(..))")
-	public void doSmth() {
+	private void doSmth() {
 		System.out.println("-------------------");
 		System.out.println("method CarServiceImpl.getCarList(..)");
 	}
 
 	@Before("execution(* by.htp.carparking.web.controller.CarController.cars(..))")
-	public void doSmth2() {
+	private void doSmth2() {
 		System.out.println("-------------------");
 		System.out.println("method CarController.cars(..)");
 	}
 
 	@Before("execution(* by.htp.carparking.web.controller.*.*(..))")
-	private void logMethodNameWithArgs(JoinPoint joinpoint) {
+	private void logControllerMethodNameWithArgs(JoinPoint joinpoint) {
 		logger.info("controllerName = " + joinpoint.getTarget().getClass().getSimpleName() + " | " + "methodName = "
 				+ joinpoint.getSignature().getName() + " | " + "args = " + Arrays.asList(joinpoint.getArgs()));
+	}
+
+	@Before("execution(* by.htp.carparking.service.impl.*.*(..))")
+	private void logServiceMethodNameWithArgs(JoinPoint joinpoint) {
+		logger.info("serviceName = " + joinpoint.getTarget().getClass().getSimpleName() + " | " + "methodName = "
+				+ joinpoint.getSignature().getName() + " | " + "args = " + Arrays.asList(joinpoint.getArgs()));
+	}
+
+	@AfterReturning(pointcut ="execution(* by.htp.carparking.web.controller.*.*(..))",returning="retVal")
+	private void afterReturningMethod(Object retVal) {
+		System.out.println("@AfterReturning advice "+retVal);
+	}
+
+	@AfterThrowing(pointcut = "execution(* by.htp.carparking.web.controller.*.*(..))", throwing = "ex")
+	private void afterThrowingMethod(Exception ex) {
+		System.out.println("@AfterThrowing advice " + ex);
+	}
+
+	@After("execution(* by.htp.carparking.web.controller.*.*(..))")
+	private void afterMethod() {
+		System.out.println("@After(finaly) advice");
+	}
+
+	@Around("execution(* by.htp.carparking.web.controller.*.*(..))")
+	private Object aroundMethod(ProceedingJoinPoint pjp) throws Throwable {
+		System.out.println("@Around advice " + pjp.getSignature());
+		return pjp.proceed();
+
 	}
 
 }

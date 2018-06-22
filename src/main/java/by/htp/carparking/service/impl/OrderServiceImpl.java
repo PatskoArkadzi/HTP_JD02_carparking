@@ -5,12 +5,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import by.htp.carparking.db.dao.OrderDao;
 import by.htp.carparking.domain.Order;
 import by.htp.carparking.service.OrderService;
 
-@Component
+@Service
 public class OrderServiceImpl implements OrderService {
 	@Autowired
 	OrderDao orderDao;

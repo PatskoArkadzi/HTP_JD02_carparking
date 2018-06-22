@@ -28,6 +28,10 @@ public class LoginController {
 	public String error() {
 		return "error";
 	}
+	@RequestMapping(value = "/exception", method = RequestMethod.GET)
+	public void exception() {
+		throw new RuntimeException();
+	}
 
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public String admin() {

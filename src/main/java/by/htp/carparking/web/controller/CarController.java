@@ -35,7 +35,7 @@ public class CarController {
 	public ModelAndView cars() throws ParseException {
 //		System.out.println("in cars");
 		RestTemplate restTemplate = new RestTemplate();
-		String url = "https://www.metaweather.com/api/location/834463/2018/6/20/";
+		String url = "https://www.metaweather.com/api/location/834463/2018/6/21/";
 		ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
 		JSONArray jsonAarray = (JSONArray) new JSONParser().parse(response.getBody());
 
