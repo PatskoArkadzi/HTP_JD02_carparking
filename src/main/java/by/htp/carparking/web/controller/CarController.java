@@ -38,7 +38,6 @@ public class CarController {
 		String url = "https://www.metaweather.com/api/location/834463/2018/6/21/";
 		ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
 		JSONArray jsonAarray = (JSONArray) new JSONParser().parse(response.getBody());
-
 		return new ModelAndView("carlist", new HashMap<String, Object>() {
 			{
 				put(REQUEST_PARAM_CAR_LIST, carService.getCarList());

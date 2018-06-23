@@ -6,14 +6,17 @@
            http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
 
 	<bean name="carDao"
+		class="by.htp.carparking.db.dao.aop.CarDaoAspectImpl" />
+
+	<!-- <bean name="carDao"
 		class="by.htp.carparking.db.dao.hbn.CarDaoHibernateImpl">
-<!-- 		class="by.htp.carparking.db.dao.impl.CarDaoDataBaseImpl"> -->
-	</bean>
+		class="by.htp.carparking.db.dao.impl.CarDaoDataBaseImpl">
+	</bean> -->
 	<bean name="orderDao"
-		class="by.htp.carparking.db.dao.impl.OrderDaoDataBaseImpl">
-	</bean>
+		class="by.htp.carparking.db.dao.impl.OrderDaoDataBaseImpl" />
+
 	<bean name="userDao"
-		class="by.htp.carparking.db.dao.impl.UserDaoDataBaseImpl">
-	</bean>
+		class="by.htp.carparking.db.dao.impl.UserDaoDataBaseImpl" />
+
 
 </beans>

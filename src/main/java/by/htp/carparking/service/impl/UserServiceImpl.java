@@ -3,7 +3,6 @@ package by.htp.carparking.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import by.htp.carparking.db.dao.UserDao;

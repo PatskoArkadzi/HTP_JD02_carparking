@@ -28,8 +28,9 @@ public class CarUpdateAction implements BaseAction {
 	@Override
 	public String executeAction(HttpServletRequest request) {
 		if (request.getMethod().toUpperCase().equals("POST")) {
-			Car car = new Car(formatString(request.getParameter(REQUEST_PARAM_CAR_ID)),
-					request.getParameter(REQUEST_PARAM_CAR_BRAND), request.getParameter(REQUEST_PARAM_CAR_MODEL));
+			Car car = new Car(formatStringToInt(request.getParameter(REQUEST_PARAM_CAR_ID)),
+					request.getParameter(REQUEST_PARAM_CAR_BRAND), request.getParameter(REQUEST_PARAM_CAR_MODEL),
+					formatStringToBoolean(request.getParameter(REQUEST_PARAM_CAR_LEASED)),formatStringToBigDecimal(request.getParameter(REQUEST_PARAM_CAR_DAY_PRICE)));
 
 			carService.updateCar(car);
 		}

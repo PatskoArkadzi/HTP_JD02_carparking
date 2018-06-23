@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import by.htp.carparking.db.dao.CarDao;
 import by.htp.carparking.domain.Car;
+import by.htp.carparking.domain.User;
 
 @Component
 public class CarDaoHibernateImpl implements CarDao{
@@ -63,6 +64,12 @@ public class CarDaoHibernateImpl implements CarDao{
 		List<Car> cars=criteria.list();
 		session.close();
 		return cars;
+	}
+
+	@Override
+	public void purchase(Car car, User user) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

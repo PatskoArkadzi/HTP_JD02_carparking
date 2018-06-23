@@ -57,8 +57,8 @@ public class OrderCarAction implements BaseAction {
 		String carId = request.getParameter(REQUEST_PARAM_CAR_ID);
 		String userId = request.getParameter(REQUEST_PARAM_USER_ID);
 		validateRequestParamNotNull(carId, userId);
-		Car orderCar = carService.readCar(formatString(carId));
-		User user = userService.readUser(formatString(userId));
+		Car orderCar = carService.readCar(formatStringToInt(carId));
+		User user = userService.readUser(formatStringToInt(userId));
 		if (orderCar != null && user != null) {
 			request.setAttribute(REQUEST_PARAM_USER, user);
 			request.setAttribute(REQUEST_PARAM_ORDERED_CAR, orderCar);
@@ -68,7 +68,7 @@ public class OrderCarAction implements BaseAction {
 			if (dateStart != null && dateEnd != null) {
 				if (orderService.isCarFree(orderCar.getId(), Date.valueOf(request.getParameter("start")),
 						Date.valueOf(request.getParameter("end")))) {
-					orderService.orderCar(formatString(userId), formatString(carId),
+					orderService.orderCar(formatStringToInt(userId), formatStringToInt(carId),
 							Date.valueOf(request.getParameter("start")), Date.valueOf(request.getParameter("end")));
 
 					StringBuilder orderedCarMessage = new StringBuilder();

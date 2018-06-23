@@ -23,8 +23,10 @@ CREATE TABLE IF NOT EXISTS `cars` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `brand` varchar(50) DEFAULT NULL,
   `model` varchar(50) DEFAULT NULL,
+  `leased` bit(1) NOT NULL DEFAULT b'0',
+  `pricePerDay` decimal(10,0) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=ascii ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=ascii ROW_FORMAT=COMPACT;
 
 -- Экспортируемые данные не выделены.
 -- Дамп структуры для таблица carparking.orders
@@ -40,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
   KEY `FK_orders_users` (`user_id`),
   CONSTRAINT `FK_orders_cars` FOREIGN KEY (`car_id`) REFERENCES `cars` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_orders_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=ascii ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB DEFAULT CHARSET=ascii ROW_FORMAT=COMPACT;
 
 -- Экспортируемые данные не выделены.
 -- Дамп структуры для таблица carparking.roles
@@ -61,6 +63,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(50) NOT NULL,
   `name` varchar(50) NOT NULL,
   `phoneNumber` varchar(50) NOT NULL,
+  `balance` decimal(10,0) NOT NULL DEFAULT '0',
   `roles_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `roles_id` (`roles_id`),

@@ -28,7 +28,7 @@ public class CarReadAction implements BaseAction {
 	public String executeAction(HttpServletRequest request) {
 		if (request.getMethod().toUpperCase().equals("POST"))
 			request.setAttribute(RESULT_CAR_SEARCH,
-					carService.readCar(formatString(request.getParameter(REQUEST_PARAM_CAR_ID))));
+					carService.readCar(formatStringToInt(request.getParameter(REQUEST_PARAM_CAR_ID))));
 
 		return PAGE_USER_CAR_READ;
 	}

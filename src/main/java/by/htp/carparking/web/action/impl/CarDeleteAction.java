@@ -29,7 +29,7 @@ public class CarDeleteAction implements BaseAction {
 		if (request.getMethod().toUpperCase().equals("POST")) {
 			/*Car car = new Car(formatString(request.getParameter(REQUEST_PARAM_CAR_ID)),
 					request.getParameter(REQUEST_PARAM_CAR_BRAND), request.getParameter(REQUEST_PARAM_CAR_MODEL));*/
-			carService.deleteCar(carService.readCar(formatString(request.getParameter(REQUEST_PARAM_CAR_ID))));
+			carService.deleteCar(carService.readCar(formatStringToInt(request.getParameter(REQUEST_PARAM_CAR_ID))));
 		}
 		request.setAttribute(REQUEST_PARAM_CAR_LIST, carService.getCarList());
 		

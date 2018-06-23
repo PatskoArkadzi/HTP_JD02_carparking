@@ -1,5 +1,7 @@
 package by.htp.carparking.domain;
 
+import java.math.BigDecimal;
+
 public class User extends Entity {
 	private static final long serialVersionUID = 6040384368950442605L;
 
@@ -8,18 +10,21 @@ public class User extends Entity {
 	private String password;
 	private String name;
 	private String phoneNumber;
+	private BigDecimal balance;
 	private int roles_id;
 
 	public User() {
 	}
 
-	public User(int id, String login, String email, String password, String name, String phoneNumber, int roles_id) {
+	public User(int id, String login, String email, String password, String name, String phoneNumber,
+			BigDecimal balance, int roles_id) {
 		super(id);
 		this.login = login;
 		this.email = email;
 		this.password = password;
 		this.name = name;
 		this.phoneNumber = phoneNumber;
+		this.balance = balance;
 		this.roles_id = roles_id;
 	}
 
@@ -63,6 +68,14 @@ public class User extends Entity {
 		this.name = name;
 	}
 
+	public BigDecimal getBalance() {
+		return balance;
+	}
+
+	public void setBalance(BigDecimal balance) {
+		this.balance = balance;
+	}
+
 	public int getRoles_id() {
 		return roles_id;
 	}
@@ -71,15 +84,12 @@ public class User extends Entity {
 		this.roles_id = roles_id;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
 		result = prime * getId();
+		result = prime * result + ((balance == null) ? 0 : balance.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((login == null) ? 0 : login.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
@@ -101,6 +111,11 @@ public class User extends Entity {
 		if (getId() != other.getId()) {
 			return false;
 		}
+		if (balance == null) {
+			if (other.balance != null)
+				return false;
+		} else if (!balance.equals(other.balance))
+			return false;
 		if (email == null) {
 			if (other.email != null)
 				return false;
@@ -134,7 +149,7 @@ public class User extends Entity {
 	@Override
 	public String toString() {
 		return "User [login=" + login + ", email=" + email + ", password=" + password + ", name=" + name
-				+ ", phoneNumber=" + phoneNumber + ", roles_id=" + roles_id + "]";
+				+ ", phoneNumber=" + phoneNumber + ", balance=" + balance + ", roles_id=" + roles_id + "]";
 	}
 
 }

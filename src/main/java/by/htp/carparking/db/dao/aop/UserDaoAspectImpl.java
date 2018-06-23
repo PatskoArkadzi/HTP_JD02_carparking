@@ -1,4 +1,4 @@
-package by.htp.carparking.db.dao.impl;
+package by.htp.carparking.db.dao.aop;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,10 +17,11 @@ import by.htp.carparking.db.dao.UserDao;
 import by.htp.carparking.domain.User;
 
 @Component
-public class UserDaoDataBaseImpl implements UserDao {
-//	private static final Logger logger = LogManager.getLogger();
+public class UserDaoAspectImpl implements UserDao {
 
-	public UserDaoDataBaseImpl() {
+	private static final Logger logger = LogManager.getLogger();
+
+	public UserDaoAspectImpl() {
 	}
 
 	@Override
@@ -44,7 +45,7 @@ public class UserDaoDataBaseImpl implements UserDao {
 			} else
 				throw new SQLException();
 		} catch (SQLException e) {
-//			 logger.error("Exception", e);
+			logger.error("Exception", e);
 		}
 	}
 
@@ -61,8 +62,7 @@ public class UserDaoDataBaseImpl implements UserDao {
 			else
 				throw new IllegalArgumentException();
 		} catch (SQLException e) {
-			e.printStackTrace();
-//			 logger.error("Exception", e);
+			logger.error("Exception", e);
 		}
 		return null;
 	}
@@ -82,7 +82,7 @@ public class UserDaoDataBaseImpl implements UserDao {
 			ps.setInt(8, entity.getId());
 			ps.executeUpdate();
 		} catch (SQLException e) {
-//			 logger.error("Exception", e);
+			logger.error("Exception", e);
 		}
 	}
 
@@ -93,7 +93,7 @@ public class UserDaoDataBaseImpl implements UserDao {
 			ps.setInt(1, entity.getId());
 			ps.executeUpdate();
 		} catch (SQLException e) {
-//			 logger.error("Exception", e);
+			logger.error("Exception", e);
 		}
 	}
 
@@ -109,7 +109,7 @@ public class UserDaoDataBaseImpl implements UserDao {
 						rs.getBigDecimal("balance"), rs.getInt("roles_id")));
 			}
 		} catch (SQLException e) {
-//			 logger.error("Exception", e);
+			logger.error("Exception", e);
 		}
 		return allUsers;
 	}

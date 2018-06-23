@@ -1,4 +1,4 @@
-package by.htp.carparking.db.dao.impl;
+package by.htp.carparking.db.dao.aop;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -17,9 +17,9 @@ import by.htp.carparking.domain.Order;
 import static by.htp.carparking.web.util.WebConstantDeclaration.*;
 
 @Component
-public class OrderDaoDataBaseImpl implements OrderDao {
+public class OrderDaoAspectImpl implements OrderDao {
 
-	public OrderDaoDataBaseImpl() {
+	public OrderDaoAspectImpl() {
 	}
 
 //	private static final Logger logger = LogManager.getLogger();
