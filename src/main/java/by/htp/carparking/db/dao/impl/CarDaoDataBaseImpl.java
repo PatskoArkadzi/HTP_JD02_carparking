@@ -107,8 +107,10 @@ public class CarDaoDataBaseImpl implements CarDao {
 
 	}
 
+	
+
 	@Override
-	public void purchase(Car car, User user) {
+	public void purchase(Car car, User user, Connection con) {
 		// TODO Auto-generated method stub
 		
 	}

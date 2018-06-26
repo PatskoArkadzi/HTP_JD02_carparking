@@ -1,5 +1,6 @@
 package by.htp.carparking.db.dao.hbn;
 
+import java.sql.Connection;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -66,8 +67,9 @@ public class CarDaoHibernateImpl implements CarDao{
 		return cars;
 	}
 
+
 	@Override
-	public void purchase(Car car, User user) {
+	public void purchase(Car car, User user, Connection con) {
 		// TODO Auto-generated method stub
 		
 	}

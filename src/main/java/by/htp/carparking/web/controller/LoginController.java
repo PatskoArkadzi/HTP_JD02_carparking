@@ -46,7 +46,7 @@ public class LoginController {
 	}
 	@RequestMapping(value = "/purchase", method = RequestMethod.GET)
 	public void purchase() {
-		carDao.purchase(carDao.read(15), userDao.read(1));
+		carDao.purchase(carDao.read(15), userDao.read(1), null);
 	}
 
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)

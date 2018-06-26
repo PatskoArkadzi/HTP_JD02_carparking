@@ -26,9 +26,7 @@ public class CarDaoAspectImpl implements CarDao {
 	public CarDaoAspectImpl() {
 	}
 
-	public static Connection con;
-
-	public void purchase(Car car, User user) {
+	public void purchase(Car car, User user, Connection con) {
 		if (con != null) {
 			try {
 				PreparedStatement ps = con.prepareStatement("SELECT leased FROM cars WHERE id=?");

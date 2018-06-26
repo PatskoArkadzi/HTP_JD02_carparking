@@ -24,7 +24,7 @@ import org.apache.logging.log4j.Logger;
 @Component
 public class CarAspect {
 	private static final Logger logger = LogManager.getLogger();
-
+	private Connection con;
 	/*
 	 * @Before("execution(* by.htp.carparking.service.impl.CarServiceImpl.getCarList(..))"
 	 * ) private void doSmth() { System.out.println("-------------------");
@@ -70,20 +70,19 @@ public class CarAspect {
 	@Around("execution(* by.htp.carparking.db.dao.aop.CarDaoAspectImpl.purchase(..)) ")
 	private Object beforeTransaction(ProceedingJoinPoint point) throws SQLException {
 		try {
-			CarDaoAspectImpl.con = DataBaseConnection.connect();
-			CarDaoAspectImpl.con.setAutoCommit(false);
-
-			return point.proceed();
+			con = DataBaseConnection.connect();
+			con.setAutoCommit(false);
+			point.getArgs()[2]=con;
+			return point.proceed(point.getArgs());
 
 		} catch (Throwable e) {
 			System.out.println("rollback");
-			CarDaoAspectImpl.con.rollback();
+			con.rollback();
 		} finally {
-			if (CarDaoAspectImpl.con != null)
-				CarDaoAspectImpl.con.commit();
-				CarDaoAspectImpl.con.close();
+			if (con != null)
+				con.commit();
+			con.close();
 		}
 		return null;
 	}
-
 }
