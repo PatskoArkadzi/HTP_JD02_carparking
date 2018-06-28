@@ -15,14 +15,21 @@
 DELETE FROM `cars`;
 /*!40000 ALTER TABLE `cars` DISABLE KEYS */;
 INSERT INTO `cars` (`id`, `brand`, `model`, `leased`, `pricePerDay`) VALUES
-	(15, 'Mercedes', 'e8', b'0', 10),
-	(18, 'Audi', 's5', b'0', 5),
-	(19, 'BMV', 'x5', b'0', 7);
+	(1, 'Mercedes', 'e8', b'1', 10),
+	(2, 'Audi', 's5', b'0', 5),
+	(3, 'BMV', 'x5', b'0', 7);
 /*!40000 ALTER TABLE `cars` ENABLE KEYS */;
 
 -- Дамп данных таблицы carparking.orders: ~1 rows (приблизительно)
 DELETE FROM `orders`;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+INSERT INTO `orders` (`id`, `user_id`, `car_id`, `dateStart`, `dateEnd`) VALUES
+	(1, 2, 3, '2018-06-29', '2018-06-30'),
+	(2, 2, 1, '2018-07-03', '2018-07-05'),
+	(3, 3, 1, '2018-06-29', '2018-06-30'),
+	(4, 1, 2, '2018-07-01', '2018-07-02'),
+	(5, 1, 2, '2018-07-03', '2018-07-04'),
+	(6, 1, 1, '2018-07-06', '2018-07-10');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 
 -- Дамп данных таблицы carparking.roles: ~2 rows (приблизительно)
@@ -37,7 +44,7 @@ INSERT INTO `roles` (`id`, `role`) VALUES
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `login`, `email`, `password`, `name`, `phoneNumber`, `balance`, `roles_id`) VALUES
-	(1, 'admin', 'admin@admin.com', 'qwerty', 'admin', '+375(29)111-22-33', 100, 1),
+	(1, 'admin', 'admin@admin.com', 'qwerty', 'admin', '+375(29)111-22-33', 90, 1),
 	(2, 'user1', 'user1@user.com', '12345', 'user1', '222-33-44', 0, 2),
 	(3, 'user2', 'user2@user.com', 'password', 'user2\r\n', '(8044)333-44-55', 0, 2);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;

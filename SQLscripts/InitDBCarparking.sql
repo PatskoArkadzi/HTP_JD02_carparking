@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
   KEY `FK_orders_users` (`user_id`),
   CONSTRAINT `FK_orders_cars` FOREIGN KEY (`car_id`) REFERENCES `cars` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_orders_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=ascii ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=ascii ROW_FORMAT=COMPACT;
 
 -- Экспортируемые данные не выделены.
 -- Дамп структуры для таблица carparking.roles
