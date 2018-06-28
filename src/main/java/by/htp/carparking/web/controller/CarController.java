@@ -18,6 +18,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
 import by.htp.carparking.domain.Car;
+import by.htp.carparking.repositories.CarRopository;
 import by.htp.carparking.service.CarService;
 
 @RestController
@@ -26,6 +27,9 @@ public class CarController {
 
 	@Autowired
 	private CarService carService;
+	
+	@Autowired
+	CarRopository carRepository;
 
 	public void setCarService(CarService carService) {
 		this.carService = carService;
@@ -40,7 +44,8 @@ public class CarController {
 		JSONArray jsonAarray = (JSONArray) new JSONParser().parse(response.getBody());
 		return new ModelAndView("carlist", new HashMap<String, Object>() {
 			{
-				put(REQUEST_PARAM_CAR_LIST, carService.getCarList());
+				put(REQUEST_PARAM_CAR_LIST, carRepository.findAll());
+//				put(REQUEST_PARAM_CAR_LIST, carService.getCarList());
 				put("jsonWheather", jsonAarray.get(0));
 			}
 		});
